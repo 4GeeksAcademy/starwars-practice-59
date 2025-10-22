@@ -3,6 +3,11 @@ from sqlalchemy import String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 
 db = SQLAlchemy()
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import String, Boolean
+from sqlalchemy.orm import Mapped, mapped_column
+
+db = SQLAlchemy()
 
 class User(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -17,3 +22,12 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+    
+
+class People(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(100))
+    height: Mapped[str] = mapped_column(String(100))
+    mass: Mapped[str] = mapped_column(String(100))
+    gender: Mapped[str] = mapped_column(String(100))
+    birth_year: Mapped[str] = mapped_column(String(100))
